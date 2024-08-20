@@ -1,0 +1,40 @@
+--- 
+// Layout component
+
+// Description ---------------------------------------------------------------------------------------
+// This component is a layout that wraps the content of the page. It includes the HTML structure of
+// the page, such as the doctype, head, and body tags. The layout component also includes the meta
+// tags, title, and other information that is common to all pages. The layout component is used to
+// define the structure of the page and provide a consistent look and feel across all pages.
+// ---------------------------------------------------------------------------------------------------
+
+// Interfaces ----------------------------------------------------------------------------------------
+interface Props { // Define the props interface
+	title: string; // Define the title prop
+}
+// ---------------------------------------------------------------------------------------------------
+
+// Constants -----------------------------------------------------------------------------------------
+const { title } = Astro.props; // Destructure the title prop
+// ---------------------------------------------------------------------------------------------------
+---
+
+<!doctype html>
+<html lang="en" class="bg-white tracking-tight">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	html {
+		font-family: "Tahoma", system-ui, sans-serif;
+	}
+</style>

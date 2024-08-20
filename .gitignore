@@ -1,0 +1,38 @@
+# Configuration file for ignoring files and folders when pushing to GitHub
+
+# Description -----------------------------------------------------------------
+# This file is used to configure which files and folders should be ignored when
+# pushing to GitHub. This is useful to avoid uploading files that are not
+# necessary for the project, such as compiled files, temporary files, etc.
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+# -----------------------------------------------------------------------------
+
+# Configuration ---------------------------------------------------------------
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+
+# IDE setting folder
+.vscode/
+# -----------------------------------------------------------------------------

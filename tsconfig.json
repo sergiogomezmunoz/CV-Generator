@@ -1,0 +1,21 @@
+// Configuration file for TypeScript compiler
+
+// Description ---------------------------------------------------------------------------------------
+// This file is used to configure the TypeScript compiler. It is used to specify the root files and
+// the compiler options. The compiler options are used to specify the target language level, the
+// module system, the output directory, and other options. The root files are used to specify the
+// files that are the root of the project. The root files are used to determine the files that are
+// included in the project.
+// ---------------------------------------------------------------------------------------------------
+
+// Configuration Options -----------------------------------------------------------------------------
+{
+  "extends": "astro/tsconfigs/strict", // Use the strict configuration
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+// ---------------------------------------------------------------------------------------------------
