@@ -35,4 +35,7 @@ pnpm-debug.log*
 
 # IDE setting folder
 .vscode/
+
+# CV data
+cv-en.json
 # -----------------------------------------------------------------------------
