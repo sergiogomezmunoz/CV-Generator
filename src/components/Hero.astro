@@ -1,1 +1,44 @@
-<h1>Hero</h1>
+---
+// Hero component
+
+// Description ---------------------------------------------------------------------------------------
+// This component is a hero section that displays a large image with a title and description.
+// The hero component is used to introduce the page and provide a visual representation of the content.
+// ---------------------------------------------------------------------------------------------------
+
+// Imports -------------------------------------------------------------------------------------------
+import { basics } from "@cv"; // Import the basics object from the cv data
+// ---------------------------------------------------------------------------------------------------
+
+// Constants -----------------------------------------------------------------------------------------
+const { name, label, image, email } = basics; // Destructure the name and label properties from the basics object
+const { city, region } = basics.location; // Destructure the city and region properties from the location object
+// ---------------------------------------------------------------------------------------------------
+---
+
+<section>
+  <div>
+    <div>
+      <h1>{name}</h1>
+      <h2>{label}</h2>
+      <span>{city}, {region}</span>
+      <footer>
+        {
+          email && (
+            <a
+              href={`mailto:${email}`}
+              title={`Send an email to ${name} (${email})`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {email}
+            </a>
+          )
+        }
+      </footer>
+    </div>
+    <figure>
+      <img src={image} alt={name} />
+    </figure>
+  </div>
+</section>
