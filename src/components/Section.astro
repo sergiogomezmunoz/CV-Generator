@@ -1,0 +1,18 @@
+---
+// Section component
+
+// Description ---------------------------------------------------------------------------------------
+// This component is a section that wraps the content of the page. It includes the HTML structure of
+// the section, such as the section tag, and the content of the section. The section component is used
+// to define the structure of the page and provide a consistent look and feel across all sections.
+// ---------------------------------------------------------------------------------------------------
+
+// Constants -----------------------------------------------------------------------------------------
+const { title } = Astro.props; // Destructure the title prop
+// ---------------------------------------------------------------------------------------------------
+---
+
+<section class="max-w-2xl mx-auto mb-16">
+  {title && <h2 class="text-2xl font-bold mb-2 leading-normal">{title}</h2>}
+  <slot />
+</section>
