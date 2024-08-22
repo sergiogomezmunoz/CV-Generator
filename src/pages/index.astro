@@ -10,18 +10,18 @@
 // ---------------------------------------------------------------------------------------------------
 
 // Imports -------------------------------------------------------------------------------------------
-import About from "@/components/About.astro"; // Import the about component
-import Education from "@/components/Education.astro"; // Import the education component
-import Experience from "@/components/Experience.astro"; // Import the experience component
-import Hero from "@/components/Hero.astro"; // Import the hero component
+import About from "@/components/sections/About.astro"; // Import the about component
+import Education from "@/components/sections/Education.astro"; // Import the education component
+import Experience from "@/components/sections/Experience.astro"; // Import the experience component
+import Hero from "@/components/sections/Hero.astro"; // Import the hero component
 import Layout from "@/layouts/Layout.astro"; // Import the layout
-import Projects from "@/components/Projects.astro"; // Import the projects component
-import Skills from "@/components/Skills.astro"; // Import the skills component
+import Projects from "@/components/sections/Projects.astro"; // Import the projects component
+import Skills from "@/components/sections/Skills.astro"; // Import the skills component
 // ---------------------------------------------------------------------------------------------------
 ---
 
 <Layout title="CV Generator">
-  <main>
+  <main class="m-auto w-full">
     <Hero />
     <About />
     <Experience />

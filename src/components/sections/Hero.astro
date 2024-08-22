@@ -8,6 +8,7 @@
 
 // Imports -------------------------------------------------------------------------------------------
 import { basics } from "@cv"; // Import the basics object from the cv data
+import Section from "@/components/Section.astro"; // Import the section component
 // ---------------------------------------------------------------------------------------------------
 
 // Constants -----------------------------------------------------------------------------------------
@@ -16,11 +17,11 @@ const { city, region } = basics.location; // Destructure the city and region pro
 // ---------------------------------------------------------------------------------------------------
 ---
 
-<section>
-  <div>
+<Section>
+  <div class="flex justify-between mt-8">
     <div>
-      <h1>{name}</h1>
-      <h2>{label}</h2>
+      <h1 class="text-4xl">{name}</h1>
+      <h2 class="text-xl">{label}</h2>
       <span>{city}, {region}</span>
       <footer>
         {
@@ -37,8 +38,8 @@ const { city, region } = basics.location; // Destructure the city and region pro
         }
       </footer>
     </div>
-    <figure>
-      <img src={image} alt={name} />
+    <figure class="max-w-32">
+      <img class="w-full rounded-lg" src={image} alt={name} />
     </figure>
   </div>
-</section>
+</Section>
