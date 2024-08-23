@@ -9,11 +9,15 @@
 // Imports -------------------------------------------------------------------------------------------
 import { basics } from "@cv"; // Import the basics object from the cv data
 import Section from "@/components/Section.astro"; // Import the section component
+import { Image } from "astro:assets"; // Import the Image component from the astro assets package
 // ---------------------------------------------------------------------------------------------------
 
 // Constants -----------------------------------------------------------------------------------------
 const { name, label, image, email } = basics; // Destructure the name and label properties from the basics object
 const { city, region } = basics.location; // Destructure the city and region properties from the location object
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/images/*.{jpeg,jpg,png,gif}"
+);
 // ---------------------------------------------------------------------------------------------------
 ---
 
@@ -39,7 +43,7 @@ const { city, region } = basics.location; // Destructure the city and region pro
       </footer>
     </div>
     <figure class="max-w-32">
-      <img class="w-full rounded-lg" src={image} alt={name} />
+      <Image class="w-full rounded-lg" src={images[image]()} alt={name} />
     </figure>
   </div>
 </Section>
