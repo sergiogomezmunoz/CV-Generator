@@ -5,10 +5,12 @@
 // for the Astro plugin. This file is used to extend the default configuration of Astro.
 // ---------------------------------------------------------------------------------------------------
 
-// Astro Configuration ------------------------------------------------------------------------
+// Imports -------------------------------------------------------------------------------------------
 import { defineConfig } from "astro/config"; // Import the defineConfig function
 import tailwind from "@astrojs/tailwind"; // Import the Tailwind CSS plugin
+// ---------------------------------------------------------------------------------------------------
 
+// Astro Configuration -------------------------------------------------------------------------------
 // https://astro.build/config
 export default defineConfig({
   // Define the configuration
