@@ -12,7 +12,7 @@ const { title } = Astro.props; // Destructure the title prop
 // ---------------------------------------------------------------------------------------------------
 ---
 
-<section class="max-w-2xl mx-auto mb-16">
-  {title && <h2 class="text-2xl font-bold mb-2 leading-normal">{title}</h2>}
+<section class="max-w-2xl mx-auto mb-8">
+  {title && <h2 class="text-xl mb-2 uppercase">{title}</h2>}
   <slot />
 </section>
