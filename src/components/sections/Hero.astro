@@ -9,37 +9,89 @@
 // Imports -------------------------------------------------------------------------------------------
 import { basics } from "@cv"; // Import the basics object from the cv data
 import Section from "@/components/Section.astro"; // Import the section component
+import Marker from "@/icons/Marker.astro"; // Import the marker icon
+import Mail from "@/icons/Mail.astro"; // Import the mail icon
+import Phone from "@/icons/Phone.astro"; // Import the phone icon
+import LinkedIn from "@/icons/LinkedIn.astro"; // Import the LinkedIn icon
+import GitHub from "@/icons/GitHub.astro"; // Import the GitHub icon
 // ---------------------------------------------------------------------------------------------------
 
 // Constants -----------------------------------------------------------------------------------------
-const { name, label, image, email } = basics; // Destructure the name and label properties from the basics object
+const { name, label, image, email, phone, profiles } = basics; // Destructure the name and label properties from the basics object
 const { city, region } = basics.location; // Destructure the city and region properties from the location object
+const SOCIAL_ICONS: Record<string, string | any> = {
+  GitHub,
+  LinkedIn,
+}; // Define a map of social icons
 // ---------------------------------------------------------------------------------------------------
 ---
 
 <Section>
-  <div class="flex justify-between mt-8">
-    <div>
-      <h1 class="text-4xl">{name}</h1>
-      <h2 class="text-xl">{label}</h2>
-      <span>{city}, {region}</span>
-      <footer>
+  <div class="flex justify-between mt-3 gap-2 mb-2 items-center">
+    <div class="flex flex-col gap-1">
+      <h1 class="text-3xl mb-1">{name}</h1>
+      <h2 class="text-lg font-medium text-gray-700 text-balance">
+        {label}
+      </h2>
+      <span class="flex items-center text-gray-600 text-sm gap-1">
+        <Marker />{city}, {region}</span
+      >
+      <footer class="flex gap-1 mt-2">
         {
           email && (
             <a
+              class="text-gray-500 inline-flex items-center justify-center border border-gray-200
+               rounded-md p-1 w-8 h-8 transition-all duration-300 hover:bg-gray-100"
               href={`mailto:${email}`}
               title={`Send an email to ${name} (${email})`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {email}
+              <Mail title={`Send an email to ${name} (${email})`} />
             </a>
           )
+        }
+        {
+          phone && (
+            <a
+              class="text-gray-500 inline-flex items-center justify-center border border-gray-200
+               rounded-md p-1 w-8 h-8 transition-all duration-300 hover:bg-gray-100"
+              href={`tel:${phone}`}
+              title={`Call ${name} (${phone})`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Phone title={`Call ${name} (${phone})`} />
+            </a>
+          )
+        }
+        {
+          profiles &&
+            profiles.map(({ network, url }) => {
+              const Icon = SOCIAL_ICONS[network];
+              const title = `View ${name}'s ${network} profile`;
+              return (
+                <a
+                  class="text-gray-500 inline-flex items-center justify-center border border-gray-200
+                    rounded-md p-1 w-8 h-8 transition-all duration-300 hover:bg-gray-100"
+                  href={url}
+                  title={title}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon title={title} />
+                </a>
+              );
+            })
         }
       </footer>
     </div>
     <figure class="max-w-32">
-      <img class="w-full rounded-lg" src={image} alt={name} />
+      <img
+        class="w-28 aspect-square rounded-xl object-cover"
+        src={image}
+        alt={name}
+      />
     </figure>
   </div>
 </Section>
