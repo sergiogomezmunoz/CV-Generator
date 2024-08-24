@@ -10,7 +10,34 @@
 
 // Imports -------------------------------------------------------------------------------------------
 import Section from "@/components/Section.astro"; // Import the section component
+import { work } from "@cv"; // Import the experience array from the cv data
 // ---------------------------------------------------------------------------------------------------
 ---
 
-<Section title="Work Experience" />
+<Section title="Work Experience">
+  {
+    work.map(({ name, position, startDate, endDate, summary }) => {
+      const startYear = new Date(startDate).getFullYear();
+      const endYear = endDate ? new Date(endDate).getFullYear() : "Present";
+      return (
+        <li class="list-none mb-4">
+          <article>
+            <header class="flex items-center justify-between">
+              <div class="flex flex-row items-center gap-1">
+                <h3 class="text-lg font-semibold text-gray-700">{name}</h3>
+                <p class="mb-1">|</p>
+                <h4 class="text-gray-600 uppercase text-sm">{position}</h4>
+              </div>
+              <time>
+                {startYear} - {endYear}
+              </time>
+            </header>
+            <footer>
+              <p class="text-gray-600 text-sm" set:html={summary} />
+            </footer>
+          </article>
+        </li>
+      );
+    })
+  }
+</Section>
