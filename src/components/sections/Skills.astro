@@ -10,7 +10,22 @@
 
 // Imports -------------------------------------------------------------------------------------------
 import Section from "@/components/Section.astro"; // Import the section component
+import { skills } from "@cv"; // Import the skills data
 // ---------------------------------------------------------------------------------------------------
 ---
 
-<Section title="Skills" />
+<Section title="Skills">
+  <ul class="inline-flex flex-wrap gap-2">
+    {
+      skills.map(({ name }) => {
+        return (
+          <li class="list-none">
+            <span class="px-2 pb-1 rounded-md text-sm border border-gray-600">
+              {name}
+            </span>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Section>
