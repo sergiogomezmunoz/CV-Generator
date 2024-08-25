@@ -10,7 +10,21 @@
 
 // Imports -------------------------------------------------------------------------------------------
 import Section from "@/components/Section.astro"; // Import the section component
+import { projects } from "@cv"; // Import the projects data
 // ---------------------------------------------------------------------------------------------------
 ---
 
-<Section title="Projects" />
+<Section title="Selected Projects">
+  <ul class="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4">
+    {
+      projects.map(({ name, description }) => {
+        return (
+          <li class="border border-gray-200 p-2 rounded-md">
+            <h3 class="text-md">{name}</h3>
+            <p class="text-gray-600 text-sm" set:html={description} />
+          </li>
+        );
+      })
+    }
+  </ul>
+</Section>
