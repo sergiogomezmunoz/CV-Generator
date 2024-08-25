@@ -1,4 +1,4 @@
---- 
+---
 // Layout component
 
 // Description ---------------------------------------------------------------------------------------
@@ -9,8 +9,9 @@
 // ---------------------------------------------------------------------------------------------------
 
 // Interfaces ----------------------------------------------------------------------------------------
-interface Props { // Define the props interface
-	title: string; // Define the title prop
+interface Props {
+  // Define the props interface
+  title: string; // Define the title prop
 }
 // ---------------------------------------------------------------------------------------------------
 
@@ -20,21 +21,19 @@ const { title } = Astro.props; // Destructure the title prop
 ---
 
 <!doctype html>
-<html lang="en" class="bg-white tracking-tight">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html
+  lang="en"
+  class="bg-white tracking-tight font-[Tahoma,system-ui,sans-serif]"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
-<style is:global>
-	html {
-		font-family: "Tahoma", system-ui, sans-serif;
-	}
-</style>
