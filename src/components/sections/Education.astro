@@ -10,7 +10,44 @@
 
 // Imports -------------------------------------------------------------------------------------------
 import Section from "@/components/Section.astro"; // Import the section component
+import { education } from "@cv"; // Import the education array from the cv data
 // ---------------------------------------------------------------------------------------------------
 ---
 
-<Section title="Education" />
+<Section title="Education">
+  <ul>
+    {
+      education.map(({ institution, area, startDate, endDate, courses }) => {
+        const startYear = new Date(startDate).getFullYear();
+        const endYear = endDate ? new Date(endDate).getFullYear() : "Present";
+        return (
+          <li class="list-none mb-4">
+            <article>
+              <header class="flex items-center justify-between">
+                <div class="flex flex-row items-center gap-1">
+                  <h3 class="text-lg font-semibold text-gray-700">{area}</h3>
+                  <p class="mb-1">|</p>
+                  <h4 class="text-gray-600 uppercase text-sm">{institution}</h4>
+                </div>
+                <time>
+                  {startYear} - {endYear}
+                </time>
+              </header>
+              <footer>
+                <ul class="list-none">
+                  {courses.map((course) => {
+                    return (
+                      <li class="text-gray-600 text-sm">
+                        <p>{course}</p>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </footer>
+            </article>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Section>
