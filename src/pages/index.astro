@@ -14,13 +14,18 @@ import About from "@/components/sections/About.astro"; // Import the about compo
 import Education from "@/components/sections/Education.astro"; // Import the education component
 import Experience from "@/components/sections/Experience.astro"; // Import the experience component
 import Hero from "@/components/sections/Hero.astro"; // Import the hero component
+import KeyBoardManager from "@/components/KeyBoardManager.astro"; // Import the keyboard manager
 import Layout from "@/layouts/Layout.astro"; // Import the layout
 import Projects from "@/components/sections/Projects.astro"; // Import the projects component
 import Skills from "@/components/sections/Skills.astro"; // Import the skills component
+import { basics } from "@cv"; // Import the basics object from the cv data
+
+// Constants -----------------------------------------------------------------------------------------
+const { name } = basics; // Destructure the name property from the basics object
 // ---------------------------------------------------------------------------------------------------
 ---
 
-<Layout title="CV Generator">
+<Layout title=`${name} CV`>
   <main class="m-auto w-full p-4">
     <Hero />
     <About />
@@ -28,5 +33,6 @@ import Skills from "@/components/sections/Skills.astro"; // Import the skills co
     <Education />
     <Projects />
     <Skills />
+    <KeyBoardManager />
   </main>
 </Layout>
