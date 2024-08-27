@@ -15,5 +15,12 @@ import tailwind from "@astrojs/tailwind"; // Import the Tailwind CSS plugin
 export default defineConfig({
   // Define the configuration
   integrations: [tailwind()], // Add the Tailwind CSS plugin
+  i18n: {
+    locales: ["en", "es"], // Define the available locales
+    defaultLocale: "en", // Define the default locale
+    routing: {
+      prefixDefaultLocale: false, // Do not prefix the default locale
+    },
+  }, // Add the i18n configuration
 });
 // ---------------------------------------------------------------------------------------------------
