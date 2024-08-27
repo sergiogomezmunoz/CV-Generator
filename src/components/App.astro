@@ -1,0 +1,39 @@
+---
+// App Component
+
+// Description ---------------------------------------------------------------------------------------
+// This is the main page of the project. It is the first page that will be displayed when the project
+// is accessed. This page is used to display information about the project and provide links to other
+// pages or external resources. The page is built using Astro components and layout. The layout
+// component is used to define the structure of the page, while the card component is used to display
+// links to other resources. The page also includes some basic styling to make it visually appealing.
+// ---------------------------------------------------------------------------------------------------
+
+// Imports -------------------------------------------------------------------------------------------
+import About from "@/components/sections/About.astro"; // Import the about component
+import Education from "@/components/sections/Education.astro"; // Import the education component
+import Experience from "@/components/sections/Experience.astro"; // Import the experience component
+import Hero from "@/components/sections/Hero.astro"; // Import the hero component
+import KeyBoardManager from "@/components/KeyBoardManager.astro"; // Import the keyboard manager
+import Layout from "@/layouts/Layout.astro"; // Import the layout
+import Projects from "@/components/sections/Projects.astro"; // Import the projects component
+import Skills from "@/components/sections/Skills.astro"; // Import the skills component
+import { basics } from "@cv"; // Import the basics object from the cv data
+// ---------------------------------------------------------------------------------------------------
+
+// Constants -----------------------------------------------------------------------------------------
+const { name } = basics; // Destructure the name property from the basics object
+// ---------------------------------------------------------------------------------------------------
+---
+
+<Layout title=`${name} CV`>
+  <main class="m-auto w-full p-4">
+    <Hero />
+    <About />
+    <Experience />
+    <Education />
+    <Projects />
+    <Skills />
+    <KeyBoardManager />
+  </main>
+</Layout>
