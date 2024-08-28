@@ -1,0 +1,15 @@
+{
+  "APP_TITLE": "CV de ${name}",
+  "ABOUT_TITLE": "Sobre mí",
+  "EXPERIENCE_TITLE": "Experiencia laboral",
+  "EDUCATION_TITLE": "Educación",
+  "PROJECTS_TITLE": "Proyectos",
+  "SKILLS_TITLE": "Habilidades",
+  "PRESENT": "Actualidad",
+  "NO_KEYBOARD_SHORTCUTS": "No hay atajos de teclado disponibles",
+  "KEYBOARD_TITLE": "Pulsa <kbd>Ctrl</kbd> + <kbd>K</kbd> para abrir el menú de atajos de teclado",
+  "ACTIONS": "Acciones",
+  "PROFILES": "Perfiles",
+  "PRINT_CV_TITLE": "Imprimir CV",
+  "SOCIAL_PROFILES_TITLE": "Ver el perfil de ${name} en ${network}"
+}

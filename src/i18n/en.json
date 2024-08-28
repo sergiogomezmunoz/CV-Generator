@@ -1,0 +1,15 @@
+{
+  "APP_TITLE": "${name} CV",
+  "ABOUT_TITLE": "About",
+  "EXPERIENCE_TITLE": "Work experience",
+  "EDUCATION_TITLE": "Education",
+  "PROJECTS_TITLE": "Projects",
+  "SKILLS_TITLE": "Skills",
+  "PRESENT": "Present",
+  "NO_KEYBOARD_SHORTCUTS": "No keyboard shortcuts available",
+  "KEYBOARD_TITLE": "Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to open the keyboard shortcuts menu",
+  "ACTIONS": "Actions",
+  "PROFILES": "Profiles",
+  "PRINT_CV_TITLE": "Print CV",
+  "SOCIAL_PROFILES_TITLE": "View ${name}'s ${network} Profile"
+}
