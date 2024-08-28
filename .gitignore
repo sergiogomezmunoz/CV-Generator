@@ -37,7 +37,7 @@ pnpm-debug.log*
 .vscode/
 
 # CV data
-cv-en.json
+cvs/
 
 # CV images
 src/images/
