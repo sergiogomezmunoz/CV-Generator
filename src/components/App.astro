@@ -15,19 +15,25 @@ import Education from "@/components/sections/Education.astro"; // Import the edu
 import Experience from "@/components/sections/Experience.astro"; // Import the experience component
 import Hero from "@/components/sections/Hero.astro"; // Import the hero component
 import KeyBoardManager from "@/components/KeyBoardManager.astro"; // Import the keyboard manager
+import Language from "@/components/sections/Language.astro"; // Import the language component
 import Layout from "@/layouts/Layout.astro"; // Import the layout
 import Projects from "@/components/sections/Projects.astro"; // Import the projects component
 import Skills from "@/components/sections/Skills.astro"; // Import the skills component
-import { basics } from "@cv"; // Import the basics object from the cv data
+import { getI18n, loadCV } from "@/i18n"; // Import the geti18n and loadCV functions from the i18n module
 // ---------------------------------------------------------------------------------------------------
 
 // Constants -----------------------------------------------------------------------------------------
+const { currentLocale } = Astro; // Get the current locale from the Astro object
+const i18n = getI18n({ currentLocale }); // Get the i18n object for the current locale
+const basics = loadCV({ currentLocale }).basics; // Get the basics object from the CV
 const { name } = basics; // Destructure the name property from the basics object
+const appTitle = i18n.APP_TITLE.replace("${name}", name); // Replace the placeholder in the app title
 // ---------------------------------------------------------------------------------------------------
 ---
 
-<Layout title=`${name} CV`>
+<Layout title={appTitle}>
   <main class="m-auto w-full p-4">
+    <Language />
     <Hero />
     <About />
     <Experience />
