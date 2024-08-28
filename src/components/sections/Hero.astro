@@ -7,16 +7,18 @@
 // ---------------------------------------------------------------------------------------------------
 
 // Imports -------------------------------------------------------------------------------------------
-import { basics } from "@cv"; // Import the basics object from the cv data
 import Section from "@/components/Section.astro"; // Import the section component
 import Marker from "@/icons/Marker.astro"; // Import the marker icon
 import Mail from "@/icons/Mail.astro"; // Import the mail icon
 import Phone from "@/icons/Phone.astro"; // Import the phone icon
 import LinkedIn from "@/icons/LinkedIn.astro"; // Import the LinkedIn icon
 import GitHub from "@/icons/GitHub.astro"; // Import the GitHub icon
+import { loadCV } from "@/i18n"; // Import the loadCV function from the i18n module
 // ---------------------------------------------------------------------------------------------------
 
 // Constants -----------------------------------------------------------------------------------------
+const { currentLocale } = Astro; // Get the current locale from the Astro object
+const basics = loadCV({ currentLocale }).basics; // Get the basics object from the CV
 const { name, label, image, email, phone, profiles } = basics; // Destructure the name and label properties from the basics object
 const { city, region } = basics.location; // Destructure the city and region properties from the location object
 const SOCIAL_ICONS: Record<string, string | any> = {

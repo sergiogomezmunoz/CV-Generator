@@ -10,11 +10,17 @@
 
 // Imports -------------------------------------------------------------------------------------------
 import Section from "@/components/Section.astro"; // Import the section component
-import { skills } from "@cv"; // Import the skills data
+import { getI18n, loadCV } from "@/i18n"; // Import the geti18n function from the i18n module
+// ---------------------------------------------------------------------------------------------------
+
+// Constants -----------------------------------------------------------------------------------------
+const { currentLocale } = Astro; // Get the current locale from the Astro object
+const i18n = getI18n({ currentLocale }); // Get the i18n object for the current locale
+const skills = loadCV({ currentLocale }).skills; // Get the summary from the basics object
 // ---------------------------------------------------------------------------------------------------
 ---
 
-<Section title="Skills">
+<Section title=`${i18n.SKILLS_TITLE}`>
   <ul class="inline-flex flex-wrap gap-2">
     {
       skills.map(({ name }) => {

@@ -10,14 +10,16 @@
 
 // Imports -------------------------------------------------------------------------------------------
 import Section from "@/components/Section.astro"; // Import the section component
+import { getI18n, loadCV } from "@/i18n"; // Import the geti18n function from the i18n module
 // ---------------------------------------------------------------------------------------------------
 
 // Constants -----------------------------------------------------------------------------------------
-import { basics } from "@cv"; // Import the basics object from the cv data
-const { summary } = basics; // Destructure the summary property from the basics object
+const { currentLocale } = Astro; // Get the current locale from the Astro object
+const i18n = getI18n({ currentLocale }); // Get the i18n object for the current locale
+const summary = loadCV({ currentLocale }).basics.summary; // Get the summary from the basics object
 // ---------------------------------------------------------------------------------------------------
 ---
 
-<Section title="About">
+<Section title=`${i18n.ABOUT_TITLE}` id="about">
   <p class="text-gray-600 text-sm text-pretty">{summary}</p>
 </Section>

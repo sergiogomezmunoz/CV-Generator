@@ -1,0 +1,22 @@
+---
+// Language component
+
+// Description ---------------------------------------------------------------------------------------
+// This component is a language selector that allows users to switch between different languages
+// on the site. The language selector component is used to enhance the accessibility of the site by
+// providing language options for users who prefer to view the site in a different language.
+// ---------------------------------------------------------------------------------------------------
+
+// Imports -------------------------------------------------------------------------------------------
+import Section from "@/components/Section.astro"; // Import the section component
+import UnitedKingdomFlag from "@/icons/UnitedKingdomFlag.astro"; // Import the UnitedKingdomFlag icon
+import SpainFlag from "@/icons/SpainFlag.astro"; // Import the SpainFlag icon
+// ---------------------------------------------------------------------------------------------------
+---
+
+<Section>
+  <div class="flex items-center justify-end space-x-4 print:hidden">
+    <a href="/" class="rounded-md"><UnitedKingdomFlag /></a>
+    <a href="/es" class="rounded-md"><SpainFlag /> </a>
+  </div>
+</Section>

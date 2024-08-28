@@ -10,11 +10,17 @@
 
 // Imports -------------------------------------------------------------------------------------------
 import Section from "@/components/Section.astro"; // Import the section component
-import { education } from "@cv"; // Import the education array from the cv data
+import { getI18n, loadCV } from "@/i18n"; // Import the geti18n function from the i18n module
 // ---------------------------------------------------------------------------------------------------
+
+// Constants -----------------------------------------------------------------------------------------
+const { currentLocale } = Astro; // Get the current locale from the Astro object
+const i18n = getI18n({ currentLocale }); // Get the i18n object for the current locale
+const education = loadCV({ currentLocale }).education; // Get the education from the education object
+// ---------------------------------------------------------------------------------------------
 ---
 
-<Section title="Education">
+<Section title=`${i18n.EDUCATION_TITLE}`>
   <ul>
     {
       education.map(({ institution, area, startDate, endDate, courses }) => {

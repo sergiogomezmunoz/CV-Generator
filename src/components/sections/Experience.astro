@@ -10,16 +10,24 @@
 
 // Imports -------------------------------------------------------------------------------------------
 import Section from "@/components/Section.astro"; // Import the section component
-import { work } from "@cv"; // Import the experience array from the cv data
+import { getI18n, loadCV } from "@/i18n"; // Import the geti18n function from the i18n module
 // ---------------------------------------------------------------------------------------------------
+
+// Constants -----------------------------------------------------------------------------------------
+const { currentLocale } = Astro; // Get the current locale from the Astro object
+const i18n = getI18n({ currentLocale }); // Get the i18n object for the current locale
+const work = loadCV({ currentLocale }).work; // Get the work from the work object
+// ---------------------------------------------------------------------------------------------
 ---
 
-<Section title="Work Experience">
+<Section title=`${i18n.EXPERIENCE_TITLE}`>
   <ul>
     {
       work.map(({ name, position, startDate, endDate, summary }) => {
         const startYear = new Date(startDate).getFullYear();
-        const endYear = endDate ? new Date(endDate).getFullYear() : "Present";
+        const endYear = endDate
+          ? new Date(endDate).getFullYear()
+          : i18n.PRESENT;
         return (
           <li class="list-none mb-3">
             <article>

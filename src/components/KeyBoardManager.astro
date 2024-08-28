@@ -8,10 +8,13 @@
 // ---------------------------------------------------------------------------------------------------
 
 // Imports -------------------------------------------------------------------------------------------
-import { basics } from "@cv"; // Import the basics object from the cv data
+import { getI18n, loadCV } from "@/i18n"; // Import the geti18n function from the i18n module
 // ---------------------------------------------------------------------------------------------------
 
 // Constants -----------------------------------------------------------------------------------------
+const { currentLocale } = Astro; // Get the current locale from the Astro object
+const i18n = getI18n({ currentLocale }); // Get the i18n object for the current locale
+const basics = loadCV({ currentLocale }).basics; // Get the basics object from the CV
 const { name, profiles } = basics; // Destructure the name and label properties from the basics object
 const SOCIAL_ICONS: Record<string, string | any> = {
   GitHub: `<svg
@@ -40,10 +43,14 @@ const SOCIAL_ICONS: Record<string, string | any> = {
 
 const profilesInfo = profiles.map(({ network, url }) => {
   const icon = SOCIAL_ICONS[network];
+  const socialProfileTitle = i18n.SOCIAL_PROFILES_TITLE.replace(
+    "${name}",
+    name
+  ).replace("${network}", network);
   return {
     id: network,
-    section: "Profiles",
-    title: `View ${name}'s ${network} Profile`,
+    section: i18n.PROFILES,
+    title: socialProfileTitle,
     url: url,
     icon: icon,
     hotkey: `ctrl+${network.charAt(0).toUpperCase()}`,
@@ -54,14 +61,14 @@ const profilesInfo = profiles.map(({ network, url }) => {
 <footer
   class="print:hidden fixed bottom-0 w-full bg-white px-2 py-1 border-t border-gray-200 text-center"
 >
-  <span class="w-full m-auto"
-    >Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to open the keyboard shortcuts menu</span
-  >
+  <span class="w-full m-auto" set:html={i18n.KEYBOARD_TITLE} />
 </footer>
 <ninja-keys
   class="print:hidden"
   data-info={JSON.stringify(profilesInfo)}
-  placeholder="No keyboard shortcuts available"
+  actions-title={i18n.ACTIONS}
+  print-cv-title={i18n.PRINT_CV_TITLE}
+  placeholder=`${i18n.NO_KEYBOARD_SHORTCUTS}`
   hideBreadcrumbs
 >
   <script>
@@ -70,6 +77,8 @@ const profilesInfo = profiles.map(({ network, url }) => {
 
     if (ninjaKeys !== null) {
       const info = JSON.parse(ninjaKeys.getAttribute("data-info") ?? "[]");
+      const actionsTitle = ninjaKeys.getAttribute("actions-title") ?? "";
+      const printCVTitle = ninjaKeys.getAttribute("print-cv-title") ?? "";
 
       const data = info.map((item: { url: string }) => {
         return {
@@ -83,7 +92,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
       ninjaKeys.data = [
         {
           id: "Print",
-          title: "Print CV",
+          title: printCVTitle,
           icon: `<svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -100,7 +109,7 @@ const profilesInfo = profiles.map(({ network, url }) => {
                 ></path>
               </svg>`,
           hotkey: "ctrl+P",
-          section: "Actions",
+          section: actionsTitle,
           handler: () => {
             window.print();
           },
